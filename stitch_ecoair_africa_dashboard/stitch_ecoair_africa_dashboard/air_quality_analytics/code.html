@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AQM Africa - Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#fefcff",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#dce2f3",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-container-high": "#e2e8f8",
+                    "surface": "#f9f9ff",
+                    "tertiary": "#5c5f60",
+                    "on-surface-variant": "#3c4a42",
+                    "tertiary-container": "#a1a3a4",
+                    "surface-tint": "#006c49",
+                    "on-surface": "#151c27",
+                    "on-primary-container": "#00422b",
+                    "surface-bright": "#f9f9ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#151c27",
+                    "primary": "#006c49",
+                    "inverse-primary": "#4edea3",
+                    "on-primary-fixed": "#002113",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#6c7a71",
+                    "on-secondary-fixed": "#001a42",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "tertiary-fixed-dim": "#c5c7c8",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#dce2f3",
+                    "on-tertiary-fixed": "#191c1d",
+                    "surface-dim": "#d3daea",
+                    "on-secondary": "#ffffff",
+                    "background": "#f9f9ff",
+                    "tertiary-fixed": "#e1e3e4",
+                    "secondary": "#0058be",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#37393b",
+                    "outline-variant": "#bbcabf",
+                    "surface-container-low": "#f0f3ff",
+                    "primary-container": "#10b981",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "inverse-surface": "#2a313d",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container": "#e7eefe",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#454748",
+                    "secondary-container": "#2170e4",
+                    "on-secondary-fixed-variant": "#004395"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max_width": "1440px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "margin": "32px",
+                    "lg": "24px",
+                    "gutter": "24px",
+                    "md": "16px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Geist"],
+                    "title-lg": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "display-lg": ["Geist"],
+                    "body-md": ["Geist"],
+                    "body-lg": ["Geist"],
+                    "label-md": ["Geist"],
+                    "label-sm": ["Geist"],
+                    "headline-lg-mobile": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Geist', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-md px-sm z-50">
+<div class="mb-xl px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+                AQ
+            </div>
+<div>
+<h1 class="font-title-lg text-title-lg font-bold text-primary">AQM Africa</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitoring Suite</p>
+</div>
+</div>
+<ul class="flex-1 space-y-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md font-medium">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">database</span>
+<span class="font-body-md text-body-md font-medium">Records</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-body-md text-body-md font-medium">Alerts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">location_city</span>
+<span class="font-body-md text-body-md font-medium">Cities</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md font-medium">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 ml-64 w-[calc(100%-256px)] h-20 bg-background flex justify-between items-center px-gutter z-40 border-b border-surface-variant">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Air Quality Dashboard</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden cursor-pointer">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young woman with a neutral expression, serving as a placeholder profile picture for a modern SaaS dashboard. Bright, natural lighting, minimalistic background to align with the clean, corporate UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5OYmPyCWA7zfD3TOahwJq-mdLm1nCw0HtznXcniVLXnBGm8q0KvJImnnrq7VlYlaAKA1lw1RKo2i8d_6-Q4cDJ4PnmacVXy_SXN4ewJP2ZEDb88LctMbbK8x2cve2ypz9tdFErWop05llOGKfmmVAXdClfNyyAWVf2j8OPBGUZeHiUsuek2Pk0q-vuHPKz0QZqNgksAXwvKIaZTjs9FHTXLOXvDnK31U6Yx4ieypvOFyqotyFMB7yEL9fsGnLi-HmR02l0wjLDs8r"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-20 p-margin min-h-screen">
+<!-- Page Header -->
+<div class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-2">Air Quality Analytics</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Visual insights into AQI levels and pollutant trends across African cities.</p>
+</div>
+<div class="grid grid-cols-12 gap-gutter max-w-max_width">
+<!-- Chart 1: AQI Comparison -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-lg text-title-lg font-semibold text-on-surface">AQI Comparison Across Cities</h3>
+<button class="flex items-center gap-2 text-on-surface-variant text-body-md font-medium hover:text-primary transition-colors">
+                        This Week <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<div class="h-64 flex items-end gap-4 relative pl-8 pb-6">
+<!-- Y Axis -->
+<div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-label-md text-on-surface-variant">
+<span>200</span>
+<span>150</span>
+<span>100</span>
+<span>50</span>
+<span>0</span>
+</div>
+<!-- Horizontal Lines -->
+<div class="absolute left-8 right-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
+<div class="w-full border-t border-surface-variant"></div>
+<div class="w-full border-t border-surface-variant"></div>
+<div class="w-full border-t border-error/20 border-dashed"></div> <!-- Alert Threshold -->
+<div class="w-full border-t border-surface-variant"></div>
+<div class="w-full border-t border-surface-variant"></div>
+</div>
+<!-- Bars -->
+<div class="relative flex-1 flex justify-center items-end group">
+<div class="w-12 bg-primary-container rounded-t-md h-[20%] transition-all duration-300 group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 text-label-md text-on-surface-variant w-full text-center">Kigali</span>
+</div>
+<div class="relative flex-1 flex justify-center items-end group">
+<div class="w-12 bg-[#eab308] rounded-t-md h-[45%] transition-all duration-300 group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 text-label-md text-on-surface-variant w-full text-center">Nairobi</span>
+</div>
+<div class="relative flex-1 flex justify-center items-end group">
+<div class="w-12 bg-[#eab308] rounded-t-md h-[60%] transition-all duration-300 group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 text-label-md text-on-surface-variant w-full text-center">Lagos</span>
+</div>
+<div class="relative flex-1 flex justify-center items-end group">
+<div class="w-12 bg-[#ef4444] rounded-t-md h-[85%] transition-all duration-300 group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 text-label-md text-on-surface-variant w-full text-center">Cairo</span>
+</div>
+<div class="relative flex-1 flex justify-center items-end group">
+<div class="w-12 bg-[#eab308] rounded-t-md h-[55%] transition-all duration-300 group-hover:opacity-80"></div>
+<span class="absolute -bottom-6 text-label-md text-on-surface-variant w-full text-center">Accra</span>
+</div>
+</div>
+</div>
+<!-- Insights Card -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg flex-1">
+<h3 class="font-title-lg text-title-lg font-semibold text-on-surface mb-6">Key Insights</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 rounded-lg bg-error-container/20 border border-error-container">
+<div class="w-10 h-10 rounded-full bg-error/10 text-error flex items-center justify-center">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Highest Pollution</p>
+<p class="font-title-lg text-title-lg font-bold text-on-surface">Cairo <span class="text-error font-body-md text-body-md font-normal ml-2">172 AQI</span></p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-primary-container/10 border border-primary-container/20">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Cleanest City</p>
+<p class="font-title-lg text-title-lg font-bold text-on-surface">Kigali <span class="text-primary font-body-md text-body-md font-normal ml-2">42 AQI</span></p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-lg bg-surface-container">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Most Common</p>
+<p class="font-title-lg text-title-lg font-bold text-on-surface text-[#eab308]">Moderate</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Alert Threshold</p>
+<p class="font-title-lg text-title-lg font-bold text-on-surface text-error">100 AQI</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chart 2: Trend Line -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
+<h3 class="font-title-lg text-title-lg font-semibold text-on-surface mb-6">AQI Trend This Week</h3>
+<div class="h-64 relative pl-8 pb-6">
+<!-- Y Axis -->
+<div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-label-md text-on-surface-variant">
+<span>150</span>
+<span>100</span>
+<span>50</span>
+<span>0</span>
+</div>
+<!-- SVG Area Chart Placeholder -->
+<div class="absolute left-8 right-0 top-0 bottom-6 border-b border-l border-surface-variant overflow-hidden">
+<svg class="w-full h-full text-secondary-container/20 fill-current opacity-50" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,100 L0,60 L20,40 L40,70 L60,30 L80,50 L100,20 L100,100 Z"></path>
+</svg>
+<svg class="w-full h-full absolute top-0 left-0 text-secondary-container stroke-current" fill="none" preserveaspectratio="none" stroke-width="2" vector-effect="non-scaling-stroke" viewbox="0 0 100 100">
+<path d="M0,60 L20,40 L40,70 L60,30 L80,50 L100,20"></path>
+</svg>
+</div>
+<!-- X Axis -->
+<div class="absolute left-8 right-0 -bottom-6 flex justify-between text-label-md text-on-surface-variant px-2">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Chart 3: Pollutant Breakdown -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
+<h3 class="font-title-lg text-title-lg font-semibold text-on-surface mb-6">Pollutant Breakdown</h3>
+<div class="space-y-5">
+<!-- PM2.5 -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-md text-body-md font-medium text-on-surface">PM2.5</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-error/10 text-error">High</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full w-[80%]"></div>
+</div>
+</div>
+<!-- PM10 -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-md text-body-md font-medium text-on-surface">PM10</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-[#eab308]/10 text-[#ca8a04]">Moderate</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#eab308] rounded-full w-[60%]"></div>
+</div>
+</div>
+<!-- CO -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-md text-body-md font-medium text-on-surface">CO</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-container/20 text-primary">Normal</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[30%]"></div>
+</div>
+</div>
+<!-- NO2 -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-md text-body-md font-medium text-on-surface">NO2</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-[#eab308]/10 text-[#ca8a04]">Moderate</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#eab308] rounded-full w-[55%]"></div>
+</div>
+</div>
+<!-- SO2 -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-md text-body-md font-medium text-on-surface">SO2</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-container/20 text-primary">Normal</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[20%]"></div>
+</div>
+</div>
+<!-- O3 -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-md text-body-md font-medium text-on-surface">O3</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-container/20 text-primary">Normal</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[40%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

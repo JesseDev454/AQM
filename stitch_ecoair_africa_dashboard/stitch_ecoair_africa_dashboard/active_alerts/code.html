@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Air Quality Alerts - AQM Africa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#fefcff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#dce2f3",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-high": "#e2e8f8",
+                        "surface": "#f9f9ff",
+                        "tertiary": "#5c5f60",
+                        "on-surface-variant": "#3c4a42",
+                        "tertiary-container": "#a1a3a4",
+                        "surface-tint": "#006c49",
+                        "on-surface": "#151c27",
+                        "on-primary-container": "#00422b",
+                        "surface-bright": "#f9f9ff",
+                        "on-error-container": "#93000a",
+                        "on-background": "#151c27",
+                        "primary": "#006c49",
+                        "inverse-primary": "#4edea3",
+                        "on-primary-fixed": "#002113",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#6c7a71",
+                        "on-secondary-fixed": "#001a42",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "tertiary-fixed-dim": "#c5c7c8",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#dce2f3",
+                        "on-tertiary-fixed": "#191c1d",
+                        "surface-dim": "#d3daea",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "tertiary-fixed": "#e1e3e4",
+                        "secondary": "#0058be",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#37393b",
+                        "outline-variant": "#bbcabf",
+                        "surface-container-low": "#f0f3ff",
+                        "primary-container": "#10b981",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "inverse-surface": "#2a313d",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-container": "#e7eefe",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#454748",
+                        "secondary-container": "#2170e4",
+                        "on-secondary-fixed-variant": "#004395"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max_width": "1440px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "margin": "32px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "md": "16px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "title-lg": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "label-md": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "headline-lg-mobile": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "title-lg": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen relative overflow-x-hidden">
+<!-- Atmospheric Background Glow -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-error-container opacity-20 blur-[100px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] rounded-full bg-surface-container-high opacity-40 blur-[120px]"></div>
+</div>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-md px-sm z-50">
+<div class="px-4 py-6 mb-4 flex flex-col gap-1">
+<h1 class="font-title-lg text-title-lg font-bold text-primary">AQM Africa</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitoring Suite</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span> Records
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span> Analytics
+            </a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all scale-[0.98] font-body-md text-body-md shadow-[0_4px_12px_rgba(16,185,129,0.15)]" href="#">
+<span class="material-symbols-outlined" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span> Alerts
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="location_city">location_city</span> Cities
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-body-md text-body-md mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+</nav>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 ml-64 bg-background/80 backdrop-blur-md flex justify-between items-center h-20 px-gutter w-[calc(100%-256px)] max-w-max_width z-40">
+<div class="font-headline-md text-headline-md font-bold text-on-surface">Air Quality Dashboard</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden md:block w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-10 pr-4 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-on-surface-variant/60" placeholder="Search cities or stations..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors relative flex items-center justify-center h-10 w-10 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border border-background"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden cursor-pointer">
+<!-- Avatar placeholder -->
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A clean, minimalist abstract avatar icon representing a user profile, utilizing the primary brand green and pristine white colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYoMgHUiBBl4B2VtOyOtvmqGwwRvWfMpEEIm9F5pWo9zZVyckt1zOjT0cAW6l0s41xgDeSgyNNCbs1Wl9w4oIJEOqKW-Sjz-3sJ-SER8yi82arTX4g3XY49q_ERmno0SBtsMM-ADwrhN1vDN91mfK36BkVMpvIc7t_dm7R5U89x66cvMVS1dUton9wtkdAGTpS_I0JvQ62sQtP-dnKFOfRNyPyonrwy1yHVPv6KyOXN5dxAU0H9qOllL_9iw-mlUlscII4NqZ8cPpi"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-gutter pb-xl max-w-[calc(1440px-256px)] w-full mx-auto relative z-10 flex flex-col gap-xl">
+<!-- Page Header -->
+<header class="flex flex-col gap-2">
+<h2 class="font-display-lg text-display-lg text-on-surface tracking-tight">Active Air Quality Alerts</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Cities with unhealthy or risky air quality levels requiring immediate attention.</p>
+</header>
+<!-- Alert Summary Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Total Alerts Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg flex flex-col justify-between h-36 relative overflow-hidden group hover:border-outline transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Alerts</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary transition-colors">monitoring</span>
+</div>
+<div class="flex items-end gap-3">
+<span class="font-headline-lg text-headline-lg text-on-surface leading-none">3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Active across network</span>
+</div>
+</div>
+<!-- Unhealthy Card (Highlighted Error State) -->
+<div class="bg-error-container/40 rounded-xl border border-error/20 p-lg flex flex-col justify-between h-36 relative overflow-hidden group hover:bg-error-container/60 transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-error/10 rounded-full blur-xl group-hover:bg-error/20 transition-all"></div>
+<div class="flex justify-between items-start relative z-10">
+<span class="font-label-md text-label-md text-on-error-container uppercase tracking-wider font-semibold">Unhealthy</span>
+<span class="material-symbols-outlined text-error" data-icon="error">error</span>
+</div>
+<div class="flex items-end gap-3 relative z-10">
+<span class="font-headline-lg text-headline-lg text-on-error-container leading-none">2</span>
+<span class="font-label-sm text-label-sm text-error mb-1">AQI 151 - 200</span>
+</div>
+</div>
+<!-- Sensitive Warnings Card -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant p-lg flex flex-col justify-between h-36 relative overflow-hidden hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Sensitive Groups</span>
+<span class="material-symbols-outlined text-tertiary-container" data-icon="masks">masks</span>
+</div>
+<div class="flex items-end gap-3">
+<span class="font-headline-lg text-headline-lg text-on-surface leading-none">1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">AQI 101 - 150</span>
+</div>
+</div>
+<!-- Hazardous Card (Zero State) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant border-dashed p-lg flex flex-col justify-between h-36 relative overflow-hidden opacity-70">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Hazardous</span>
+<span class="material-symbols-outlined text-outline-variant" data-icon="skull">skull</span>
+</div>
+<div class="flex items-end gap-3">
+<span class="font-headline-lg text-headline-lg text-on-surface-variant leading-none">0</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">AQI &gt; 300</span>
+</div>
+</div>
+</section>
+<!-- Main Content Area: List & Sidebar -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-lg items-start">
+<!-- Alert List (8 columns) -->
+<section class="xl:col-span-8 flex flex-col gap-sm">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-2 px-1">Active Incidents</h3>
+<!-- Alert Item 1: Lagos -->
+<article class="bg-surface-container-lowest rounded-xl border border-error/30 p-lg flex flex-col md:flex-row gap-lg md:items-center relative overflow-hidden group hover:shadow-[0_8px_24px_rgba(186,26,26,0.08)] transition-all duration-300">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-center justify-center w-12 h-12 rounded-full bg-error-container text-on-error-container flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex-grow flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h4 class="font-title-lg text-title-lg text-on-surface">Lagos, Nigeria</h4>
+<span class="px-3 py-1 bg-error/10 text-error rounded-full font-label-sm text-label-sm uppercase tracking-wider border border-error/20">Unhealthy</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                            Prolonged exposure to elevated PM2.5 levels detected across central districts. Residents are advised to limit outdoor exertion.
+                        </p>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-1 flex-shrink-0 md:pl-lg md:border-l md:border-outline-variant/50">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Current AQI</span>
+<span class="font-headline-md text-headline-md text-error leading-none">162</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-label-sm text-label-sm">10 mins ago</span>
+</div>
+</div>
+</article>
+<!-- Alert Item 2: Cairo -->
+<article class="bg-surface-container-lowest rounded-xl border border-error/30 p-lg flex flex-col md:flex-row gap-lg md:items-center relative overflow-hidden group hover:shadow-[0_8px_24px_rgba(186,26,26,0.08)] transition-all duration-300">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-center justify-center w-12 h-12 rounded-full bg-error-container text-on-error-container flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex-grow flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h4 class="font-title-lg text-title-lg text-on-surface">Cairo, Egypt</h4>
+<span class="px-3 py-1 bg-error/10 text-error rounded-full font-label-sm text-label-sm uppercase tracking-wider border border-error/20">Unhealthy</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                            Severe dust concentration combined with industrial emissions triggering local sensors. Visibility reduced in localized sectors.
+                        </p>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-1 flex-shrink-0 md:pl-lg md:border-l md:border-outline-variant/50">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Current AQI</span>
+<span class="font-headline-md text-headline-md text-error leading-none">155</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-label-sm text-label-sm">45 mins ago</span>
+</div>
+</div>
+</article>
+<!-- Alert Item 3: Johannesburg -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg flex flex-col md:flex-row gap-lg md:items-center relative overflow-hidden group hover:border-tertiary-container hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-300">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary-container"></div>
+<div class="flex items-center justify-center w-12 h-12 rounded-full bg-surface-container text-on-surface-variant flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="info" data-weight="fill" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<div class="flex-grow flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h4 class="font-title-lg text-title-lg text-on-surface">Johannesburg, SA</h4>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface rounded-full font-label-sm text-label-sm uppercase tracking-wider border border-outline-variant">Sensitive Grps</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                            Ozone levels slowly rising due to thermal inversion. Children and elderly should reduce prolonged outdoor exertion.
+                        </p>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-1 flex-shrink-0 md:pl-lg md:border-l md:border-outline-variant/50">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Current AQI</span>
+<span class="font-headline-md text-headline-md text-on-surface leading-none">112</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-label-sm text-label-sm">2 hours ago</span>
+</div>
+</div>
+</article>
+</section>
+<!-- Sidebar Context (4 columns) -->
+<aside class="xl:col-span-4 flex flex-col gap-md sticky top-28">
+<!-- Rule Card (Glassmorphic feel) -->
+<div class="bg-surface-container-lowest/80 backdrop-blur-md rounded-xl border border-outline-variant p-lg shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/4"></div>
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-primary-container/20 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="rule_settings">rule_settings</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Alert Rules Engine</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-6">
+                        System-wide alerts are automatically triggered and broadcasted to relevant authorities when the regional Air Quality Index (AQI) sustains a reading above <strong class="text-on-surface font-semibold">100</strong> for more than 15 consecutive minutes.
+                    </p>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/50">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Current Threshold</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">AQI &gt; 100</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden flex">
+<div class="w-[20%] bg-primary h-full"></div>
+<div class="w-[30%] bg-tertiary-container h-full"></div>
+<div class="w-[50%] bg-error/20 h-full border-l border-error/50"></div>
+</div>
+</div>
+</div>
+<!-- Quick Action Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg flex flex-col items-start gap-4">
+<h3 class="font-title-lg text-title-lg text-on-surface">Need to configure notifications?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Adjust your personal alert preferences and delivery methods in settings.</p>
+<button class="px-6 py-2 bg-background border border-outline hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded-lg transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+                        Manage Settings
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

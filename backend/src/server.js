@@ -11,7 +11,8 @@ const port = process.env.PORT || 5000;
 const isProduction = process.env.NODE_ENV === "production";
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL,
+  ...(process.env.FRONTEND_URL || "").split(",").map((origin) => origin.trim()),
+  "https://aqm-sigma.vercel.app",
   "http://localhost:5173",
   "http://127.0.0.1:5173"
 ].filter(Boolean);

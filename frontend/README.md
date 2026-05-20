@@ -1,18 +1,58 @@
 # AQM Africa Frontend
 
-React, Vite, Tailwind CSS, Recharts, Axios, React Router, and Lucide React frontend for the Basic Package air quality dashboard.
+This is the React dashboard for the AQM Africa air quality app. It gets data from the backend API and displays it in pages, cards, charts, tables, and alert panels.
 
-## Install
+## What It Shows
+
+- Dashboard overview
+- Air quality records
+- Analytics charts
+- Active alerts
+- Monitored cities
+- System information
+
+## Setup
 
 ```powershell
 npm install
 Copy-Item .env.example .env
 ```
 
-## Run
+Update `.env`:
+
+```env
+VITE_API_BASE_URL=http://localhost:5000/api
+```
+
+## Run Locally
 
 ```powershell
 npm run dev
+```
+
+The frontend runs on:
+
+```text
+http://localhost:5173
+```
+
+## Pages
+
+```text
+/          Dashboard overview
+/records   Air quality records and filters
+/analytics AQI charts and pollutant breakdown
+/alerts    Active AQI alerts
+/cities    Monitored city cards
+/settings  Basic system information
+```
+
+## Production Environment
+
+Use this on Vercel:
+
+```env
+VITE_API_BASE_URL=https://aqm-q6f5.onrender.com/api
 ```
 
 ## Build
@@ -21,25 +61,4 @@ npm run dev
 npm run build
 ```
 
-## Environment Variables
-
-```env
-VITE_API_BASE_URL=http://localhost:5000/api
-```
-
-For Vercel production:
-
-```env
-VITE_API_BASE_URL=https://your-render-backend-url.onrender.com/api
-```
-
-## Pages And Routes
-
-- `/` - Dashboard overview
-- `/records` - Air quality records table with search and filters
-- `/analytics` - AQI charts, trend, pollutant breakdown, and insights
-- `/alerts` - Active visual alerts for AQI above 100
-- `/cities` - Monitored African city cards
-- `/settings` - Read-only system information
-
-The visual design is based on the approved Stitch export in `stitch_ecoair_africa_dashboard`.
+The production build is created in the `dist` folder.

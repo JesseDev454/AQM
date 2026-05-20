@@ -1,80 +1,105 @@
-# Air Quality Manufacturing Dashboard for African Cities with Alerts
+# AQM Africa Air Quality Dashboard
 
-A Basic Package MERN stack dashboard for monitoring air quality records across African cities. The frontend preserves the approved Stitch design direction: light environmental SaaS styling, fixed sidebar navigation, rounded cards, data tables, charts, city cards, and visual AQI alerts.
+AQM Africa is a MERN stack dashboard for checking air quality records across African cities. It shows city AQI data, charts, records, alerts, and basic system information.
 
-## Features
+The app was built from the approved Stitch dashboard design in `stitch_ecoair_africa_dashboard`.
 
-- Dashboard overview with summary cards, AQI charts, alerts, and recent records
-- Database-backed air quality records
-- Records search, city filter, status filter, and reset
-- Analytics page with Recharts visualizations
-- Alerts page for records where AQI is above 100
-- Monitored cities page with searchable city cards
-- Read-only system information page
-- Loading, empty, and friendly error states
-- Responsive layout for desktop, tablet, and mobile
-- Deployment-ready frontend and backend environment configuration
+## How The App Works
+
+The app has two parts:
+
+- `backend` - the Express API that connects to MongoDB and sends air quality data.
+- `frontend` - the React dashboard that displays the data from the API.
+
+MongoDB stores the air quality records. The backend reads those records and returns them through API endpoints. The frontend uses Axios to call those endpoints and show the dashboard, charts, tables, city cards, and alerts.
+
+Visual alerts appear when a city has an AQI above `100`.
+
+## Main Features
+
+- Dashboard overview
+- Air quality records table
+- Analytics charts
+- Active AQI alerts
+- Monitored city cards
+- Basic system information page
+- City filter
+- Status filter
+- Search
+- Loading, empty, and error states
+- Responsive layout for desktop and mobile
 
 ## Tech Stack
 
-- Frontend: React, Vite, JavaScript, Tailwind CSS, React Router DOM, Axios, Recharts, Lucide React
-- Backend: Node.js, Express.js, MongoDB, Mongoose, CORS, dotenv, Nodemon
-- Deployment targets: Vercel frontend, Render backend, MongoDB Atlas database
+Frontend:
 
-## Folder Structure
+- React
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+- Recharts
+- Lucide React
+
+Backend:
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- CORS
+- dotenv
+
+Deployment:
+
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
+
+## Project Structure
 
 ```text
 AQM/
-├── backend/
-│   ├── src/
-│   │   ├── config/db.js
-│   │   ├── controllers/airQualityController.js
-│   │   ├── models/AirQuality.js
-│   │   ├── routes/airQualityRoutes.js
-│   │   ├── seed/seedData.js
-│   │   └── server.js
-│   ├── .env.example
-│   ├── package.json
-│   └── README.md
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/api.js
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   ├── .env.example
-│   ├── package.json
-│   └── README.md
-├── stitch_ecoair_africa_dashboard/
-├── .gitignore
-└── README.md
+  backend/
+    src/
+      config/
+      controllers/
+      models/
+      routes/
+      seed/
+      server.js
+    .env.example
+    package.json
+    README.md
+
+  frontend/
+    src/
+      components/
+      pages/
+      services/
+      utils/
+      App.jsx
+      main.jsx
+      index.css
+    .env.example
+    package.json
+    README.md
+
+  stitch_ecoair_africa_dashboard/
+  README.md
 ```
 
 ## Backend Setup
 
-```powershell
-cd C:\Users\goodl\Documents\AQM\backend
-npm install
-Copy-Item .env.example .env
-npm run dev
-```
-
-Set `MONGO_URI` in `backend/.env` before running the API.
-
-## Frontend Setup
+Go to the backend folder:
 
 ```powershell
-cd C:\Users\goodl\Documents\AQM\frontend
+cd backend
 npm install
 Copy-Item .env.example .env
-npm run dev
 ```
 
-## Environment Variables
-
-Backend:
+Add your MongoDB connection string to `backend/.env`:
 
 ```env
 PORT=5000
@@ -83,69 +108,112 @@ NODE_ENV=development
 FRONTEND_URL=http://localhost:5173
 ```
 
-Frontend:
+Start the backend:
+
+```powershell
+npm run dev
+```
+
+The backend should run on:
+
+```text
+http://localhost:5000
+```
+
+## Frontend Setup
+
+Go to the frontend folder:
+
+```powershell
+cd frontend
+npm install
+Copy-Item .env.example .env
+```
+
+Set the API URL in `frontend/.env`:
 
 ```env
 VITE_API_BASE_URL=http://localhost:5000/api
 ```
 
-## API Endpoints
+Start the frontend:
 
-- `GET /api/health`
-- `GET /api/air-quality`
-- `GET /api/air-quality/city/:city`
-- `GET /api/air-quality/summary`
-- `GET /api/air-quality/alerts`
-- `POST /api/air-quality/seed`
+```powershell
+npm run dev
+```
 
-## Seed Data
+The frontend should run on:
 
-After the backend is running and connected to MongoDB:
+```text
+http://localhost:5173
+```
+
+## Seed The Database
+
+After the backend is connected to MongoDB, run this once:
 
 ```powershell
 Invoke-RestMethod -Method Post http://localhost:5000/api/air-quality/seed
 ```
 
-The seed endpoint clears old records before inserting the approved African city sample records.
+This adds the sample African city air quality records to MongoDB. It clears old records first, so it will not duplicate records.
 
-## Build Checks
+## API Endpoints
 
-Frontend:
-
-```powershell
-cd C:\Users\goodl\Documents\AQM\frontend
-npm run build
+```text
+GET  /api/health
+GET  /api/air-quality
+GET  /api/air-quality/city/:city
+GET  /api/air-quality/summary
+GET  /api/air-quality/alerts
+POST /api/air-quality/seed
 ```
 
-Backend:
+## Deployment Setup
 
-```powershell
-cd C:\Users\goodl\Documents\AQM\backend
-npm start
-```
-
-## Deployment
-
-Render backend environment variables:
+Backend on Render:
 
 ```env
 PORT=5000
 MONGO_URI=your_mongodb_atlas_connection_string
 NODE_ENV=production
-FRONTEND_URL=https://your-vercel-frontend-url.vercel.app
+FRONTEND_URL=https://aqm-sigma.vercel.app
 ```
 
-Vercel frontend environment variable:
+Frontend on Vercel:
 
 ```env
-VITE_API_BASE_URL=https://your-render-backend-url.onrender.com/api
+VITE_API_BASE_URL=https://aqm-q6f5.onrender.com/api
 ```
 
-## Screenshots
+Important: `FRONTEND_URL` on Render must match the Vercel frontend URL exactly. This is needed so CORS allows the frontend to call the backend.
 
-Add screenshots after deployment or local QA.
+## Live App
 
-## Live URLs
+Frontend:
 
-- Live frontend URL: `https://your-vercel-frontend-url.vercel.app`
-- Live backend URL: `https://your-render-backend-url.onrender.com`
+```text
+https://aqm-sigma.vercel.app
+```
+
+Backend:
+
+```text
+https://aqm-q6f5.onrender.com
+```
+
+## Build Commands
+
+Frontend build:
+
+```powershell
+cd frontend
+npm run build
+```
+
+Backend start:
+
+```powershell
+cd backend
+npm start
+```

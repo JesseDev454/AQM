@@ -52,6 +52,8 @@ const Records = () => {
     setStatus("");
   };
 
+  const hasActiveFilters = Boolean(search || city || status);
+
   if (loading) return <LoadingState />;
   if (error) return <ErrorState />;
 
@@ -84,11 +86,19 @@ const Records = () => {
             </select>
           </div>
 
-          <button className="inline-flex items-center justify-center gap-2 rounded-lg border border-outline-variant bg-surface-container-lowest px-6 py-2.5 text-label-md text-on-surface transition hover:bg-surface" onClick={resetFilters}>
+          <button
+            type="button"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-outline-variant bg-surface-container-lowest px-6 py-2.5 text-label-md text-on-surface transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
+            onClick={resetFilters}
+            disabled={!hasActiveFilters}
+          >
             <RotateCcw className="h-4 w-4" />
             Reset
           </button>
         </div>
+        <p className="mt-4 text-label-md text-on-surface-variant">
+          Showing {filteredRecords.length} of {records.length} records
+        </p>
       </section>
 
       <RecordsTable records={filteredRecords} />

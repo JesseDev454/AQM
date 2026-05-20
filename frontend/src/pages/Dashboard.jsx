@@ -66,7 +66,17 @@ const Dashboard = () => {
       <section className="grid grid-cols-1 gap-lg xl:grid-cols-3">
         <div className="xl:col-span-2">
           <div className="mb-4 flex justify-end">
-            <CityFilter records={records} value={city} onChange={setCity} label="Dashboard City Filter" />
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-end">
+              <CityFilter records={records} value={city} onChange={setCity} label="Dashboard City Filter" />
+              <button
+                type="button"
+                className="rounded-lg border border-outline-variant bg-surface-container-lowest px-4 py-2.5 text-label-md text-on-surface transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
+                onClick={() => setCity("")}
+                disabled={!city}
+              >
+                Reset
+              </button>
+            </div>
           </div>
           <AQIComparisonChart records={filteredRecords} />
         </div>

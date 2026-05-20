@@ -1,6 +1,6 @@
 import React from "react";
 import { Bell, CheckCircle2, Menu } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const pageMeta = {
   "/": {
@@ -55,10 +55,10 @@ const Header = ({ onOpenSidebar, apiOnline, alertCount }) => {
             <CheckCircle2 className="h-4 w-4 text-primary" />
             Updated: Today
           </div>
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-primary">
+          <Link to="/alerts" className="relative flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-primary" aria-label="View active alerts">
             <Bell className="h-5 w-5" />
             {alertCount > 0 && <span className="absolute right-2 top-2 h-2.5 w-2.5 rounded-full border-2 border-background bg-error" />}
-          </div>
+          </Link>
         </div>
       </div>
     </header>

@@ -4,10 +4,26 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 10000
+  timeout: 60000
 });
 
 const readData = (response) => response.data?.data ?? response.data;
+
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const config = error.config;
+    const canRetry = config && config.method === "get" && !config._retry;
+
+    if (!canRetry) {
+      return Promise.reject(error);
+    }
+
+    config._retry = true;
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    return api(config);
+  }
+);
 
 export const getHealth = async () => readData(await api.get("/health"));
 export const getAirQualityRecords = async () => readData(await api.get("/air-quality"));
